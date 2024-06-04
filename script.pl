@@ -3,8 +3,11 @@
 use strict;
 use warnings;
 
-my $test = 'random';
+use Data::Dumper;
 
-print $test . "Hello world!";
+my $a = 'hello';
+my $b = 22.32;
+
+print Dumper( $a, $b );
 
 1;
