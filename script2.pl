@@ -6,9 +6,6 @@ use feature qw/ signatures /;
 
 use Data::Dumper;
 
-require './script2.pl';
-
-our ( $script2_var);
-
-print "$script2_var";
+our $script2_var = 'secret';
+print "Hello from script 2";
 1;
