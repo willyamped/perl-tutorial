@@ -2,13 +2,17 @@
 
 use strict;
 use warnings;
-use feature qw/ signatures /;
+use feature qw/ say /;
 
 use Data::Dumper;
+use Dog;
 
-require './script2.pl';
+my $Dog = Dog->new('labrador', 50, 70, 'golden', 'Fiddo');
+say $Dog->height;
 
-our ( $script2_var);
+$Dog->set_height(100);
+say $Dog->height;
 
-print "$script2_var";
+say $Dog->get_height_and_weight;
+
 1;
