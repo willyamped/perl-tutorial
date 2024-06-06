@@ -8,25 +8,28 @@ use Data::Dumper;
 use Mojo::UserAgent;
 use Mojo::Promise;
 
-my $post = 'https://jsonplaceholder.typicode.com/posts/1';
+# FH is file handle, > is write
+# open (my $FH, '>', './test.txt');
 
-my $UA = Mojo::UserAgent->new;
+# >> to append
+# open (my $FH, '>>', './test.txt');
+# print $FH "hello world2";
 
-# my $Result = $UA->get($post)->result;
-# say $Result->is_success;
-# say $Result->code;
-# say $Result->body;
+# < to read all lines of code
+# open (my $FH, '<', './test.txt');
+# my $content = do {
+#   local $/; <$FH>;
+# };
 
-my @promises = map {
-  $UA->get_p('https://jsonplaceholder.typicode.com/posts/1')
-} 1 .. 10;
+# Read line by line
+open (my $FH, '<', './test.txt');
+my $content = '';
+while(defined(my $line = <$FH>)) {
+  $content .= $line;
+}
 
-Mojo::Promise->all(@promises)
-  ->then(
-    sub {
-      my @resolved = @_;
-      say Dumper($_->[0]->result->json) for @resolved;
-    }
-  )
-  ->wait;
+close($FH);
+
+say $content;
+
 1;
