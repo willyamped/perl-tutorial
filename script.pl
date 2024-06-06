@@ -6,13 +6,8 @@ use feature qw/ say /;
 
 use Data::Dumper;
 use Dog;
+use OurModule;
 
-my $Dog = Dog->new('labrador', 50, 70, 'golden', 'Fiddo');
-say $Dog->height;
-
-$Dog->set_height(100);
-say $Dog->height;
-
-say $Dog->get_height_and_weight;
+say OurModule::add_nums( 3, 2);
 
 1;
